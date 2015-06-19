@@ -132,15 +132,15 @@ vim: se et sw=4 ts=4 sts=4:
     </div>
 
     <script>
-        function pageUrl() {
-            return window.location.href.replace(/(#|\?).*$/, '');
+        function shareUrl() {
+            return "https://services.youyanchu.com/coupons/-PABXNWV_KJd0r9EbqJQ5w";
         }
         function shareToWeibo() {
             var url = 'http://service.weibo.com/share/share.php';
             var options = {
-                url: pageUrl(),
+                url: shareUrl(),
                 pic: 'https://dn-youyanchu-special.qbox.me/summer/images/summer-01.jpg',
-                title: '赏味期限在今夏 夏日主题演出红包',
+                title: '赏味期在今夏--有演出夏日福利红包放送',
                 appkey: '2951307331',
             };
             var params = [];
@@ -160,7 +160,7 @@ vim: se et sw=4 ts=4 sts=4:
         document.getElementById('share-wc').onclick = showModal;
         document.getElementById('modal').onclick = hideModal;
         new QRCode(document.getElementById('qr-code'), {
-            text: pageUrl(),
+            text: shareUrl(),
             width: 220,
             height: 220,
             margin: 20
