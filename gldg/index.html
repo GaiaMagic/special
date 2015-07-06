@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!--
+vim: se et sw=4 ts=4 sts=4:
+-->
+<html>
+
+<head>
+<meta charset="utf-8">
+<title>马頔“孤鸟的歌”剧场巡演 - 特享红包</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<link href="//dn-youyanchu-special.qbox.me/assets/css/sh.css" rel="stylesheet" type="text/css">
+<link href="//dn-youyanchu-special.qbox.me/gldg/gldg.css" rel="stylesheet" type="text/css">
+<script src="//dn-youyanchu-special.qbox.me/assets/js/qrcode.min.js"></script>
+<style>
+.gldg-2 {
+    background: none;
+}
+</style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div>
+            <img src="//dn-youyanchu-special.qbox.me/gldg/images/gldg-01.jpg">
+        </div>
+        <div class="gldg-2">
+            <div class="video">
+                <iframe width="100%" src="http://player.youku.com/embed/XMTI2ODM2MTk3Ng==" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div>
+            <img src="//dn-youyanchu-special.qbox.me/gldg/images/gldg-03.jpg">
+        </div>
+        <div>
+            <img src="//dn-youyanchu-special.qbox.me/gldg/images/gldg-04.jpg">
+        </div>
+        <div>
+            <img src="//dn-youyanchu-special.qbox.me/gldg/images/gldg-05.png">
+        </div>
+        <div>
+            <img src="//dn-youyanchu-special.qbox.me/gldg/images/gldg-07.png">
+        </div>
+        <div>
+            <a href="https://youyanchu.com/show/15785" target="_blank">
+                <img src="//dn-youyanchu-special.qbox.me/gldg/images/gldg-08.png">
+            </a>
+        </div>
+        <div>
+            <a href="https://youyanchu.com/show/15784" target="_blank">
+                <img src="//dn-youyanchu-special.qbox.me/gldg/images/gldg-09.png">
+            </a>
+        </div>
+        <div>
+            <a href="https://youyanchu.com/show/15783" target="_blank">
+                <img src="//dn-youyanchu-special.qbox.me/gldg/images/gldg-10.png">
+            </a>
+        </div>
+        <div>
+            <a href="https://youyanchu.com/show/15782" target="_blank">
+                <img src="//dn-youyanchu-special.qbox.me/gldg/images/gldg-11.png">
+            </a>
+        </div>
+        <div>
+            <a href="https://youyanchu.com/show/15781" target="_blank">
+                <img src="//dn-youyanchu-special.qbox.me/gldg/images/gldg-12.png">
+            </a>
+        </div>
+        <div>
+            <a href="https://youyanchu.com/show/15780" target="_blank">
+                <img src="//dn-youyanchu-special.qbox.me/gldg/images/gldg-13.png">
+            </a>
+        </div>
+        <div>
+            <img src="//dn-youyanchu-special.qbox.me/gldg/images/gldg-14.png">
+        </div>
+        <div>
+            <a title="领取红包" href="https://services.youyanchu.com/coupons/Yo2Awcod-uEUICuXywYKhA">
+                <img src="//dn-youyanchu-special.qbox.me/gldg/images/gldg-15.png">
+            </a>
+        </div>
+        <div class="pair">
+            <a id="share-wb" target="_blank" href="#" title="分享到微博">
+                <img src="//dn-youyanchu-special.qbox.me/gldg/images/gldg-16.png">
+            </a>
+            <a id="share-wx" href="#weixin" title="分享到微信">
+                <img src="//dn-youyanchu-special.qbox.me/gldg/images/gldg-17.png">
+            </a>
+        </div>
+        <div>
+            <img src="//dn-youyanchu-special.qbox.me/gldg/images/gldg-18.png">
+        </div>
+    </div>
+
+    <div id="modal"></div>
+    <div class="modal--fade" id="weixin">
+        <div class="modal-inner">
+            <div id="qr-code"></div>
+            <div class="modal-content qr-code-text">微信「扫一扫」</div>
+        </div>
+        <a href="#!" class="modal-close" title="关闭">&times;</a>
+    </div>
+
+    <script>
+        function shareUrl() {
+            return "https://services.youyanchu.com/coupons/Yo2Awcod-uEUICuXywYKhA";
+        }
+        function shareToWeibo() {
+            var url = 'http://service.weibo.com/share/share.php';
+            var options = {
+                url: shareUrl(),
+                pic: 'https://dn-youyanchu-special.qbox.me/gldg/images/wb.jpg',
+                title: '马頔“孤鸟的歌”剧场巡演 - 限量特享红包',
+                appkey: '2951307331',
+            };
+            var params = [];
+            for (var key in options) {
+                params.push(key + '=' + encodeURIComponent(options[key]));
+            }
+            return url + '?' + params.join('&');
+        }
+        function showModal() {
+            document.getElementById('modal').className = 'modal';
+        }
+        function hideModal() {
+            document.getElementById('modal').className = '';
+        }
+        document.getElementById('share-wb').href = shareToWeibo();
+        document.getElementById('share-wx').onclick = showModal;
+        document.getElementById('modal').onclick = hideModal;
+        new QRCode(document.getElementById('qr-code'), {
+            text: shareUrl(),
+            width: 220,
+            height: 220,
+            margin: 20
+        });
+    </script>
+</body>
+
+</html>
