@@ -53,26 +53,26 @@ img {
             <img src="//dn-youyanchu-special.qbox.me/ybnt-2/images/ybnt-02.jpg">
         </div>
         <div class="pair">
-            <a href="https://youyanchu.com/show/16558" target="_blank">
+            <a class="perfLink" href="https://youyanchu.com/show/16558" target="_blank">
                 <img src="//dn-youyanchu-special.qbox.me/ybnt-2/images/ybnt-03.jpg">
             </a>
-            <a href="https://youyanchu.com/show/16247" target="_blank">
+            <a class="perfLink" href="https://youyanchu.com/show/16247" target="_blank">
                 <img src="//dn-youyanchu-special.qbox.me/ybnt-2/images/ybnt-04.jpg">
             </a>
         </div>
         <div class="pair">
-            <a href="https://youyanchu.com/show/16771" target="_blank">
+            <a class="perfLink" href="https://youyanchu.com/show/16771" target="_blank">
                 <img src="//dn-youyanchu-special.qbox.me/ybnt-2/images/ybnt-05.jpg">
             </a>
-            <a href="https://youyanchu.com/show/16409" target="_blank">
+            <a class="perfLink" href="https://youyanchu.com/show/16409" target="_blank">
                 <img src="//dn-youyanchu-special.qbox.me/ybnt-2/images/ybnt-06.jpg">
             </a>
         </div>
         <div class="pair">
-            <a href="https://youyanchu.com/show/16619" target="_blank">
+            <a class="perfLink" href="https://youyanchu.com/show/16619" target="_blank">
                 <img src="//dn-youyanchu-special.qbox.me/ybnt-2/images/ybnt-07.jpg">
             </a>
-            <a href="https://youyanchu.com/show/16864" target="_blank">
+            <a class="perfLink" href="https://youyanchu.com/show/16864" target="_blank">
                 <img src="//dn-youyanchu-special.qbox.me/ybnt-2/images/ybnt-08.jpg">
             </a>
         </div>
@@ -114,6 +114,47 @@ img {
     </div>
 
     <script>
+        var YYCAppBridge = null;
+
+        function setUpBridge () {
+            var bridge = window.YYCApp;
+            if (bridge) {
+                YYCAppBridge = function (method, args) {
+                    window.YYCApp[method].apply(window.YYCApp, args);
+                };
+            } else {
+                bridge = window.WebViewJavascriptBridge;
+                if (bridge) {
+                    YYCAppBridge = function (method, args) {
+                        window.WebViewJavascriptBridge.callHandler(method, args);
+                    };
+                } else {
+                    YYCAppBridge = null;
+                }
+            }
+
+            if (YYCAppBridge) {
+                var perfLinks = document.getElementsByClassName('perfLink');
+                if (perfLinks && perfLinks.length) {
+                    for (var i = 0; i < perfLinks.length; i++) {
+                        var perfId = /\d+/.exec(perfLinks[i].href)[0];
+                        perfLinks[i].onclick = (function (perfId) {
+                            return function () {
+                                YYCAppBridge('callPerformanceDetail', [perfId]);
+                                return false;
+                            };
+                        })(perfId);
+                    }
+                }
+                document.getElementById('share-wb').onclick = showModal;
+            }
+        }
+
+        setUpBridge();
+        document.addEventListener('WebViewJavascriptBridgeReady', function(event) {
+            setUpBridge();
+        });
+
         function shareUrl() {
             return "https://services.youyanchu.com/coupons/Q1B9LWrmY88ul9bT4CVv-Q";
         }
@@ -132,7 +173,17 @@ img {
             return url + '?' + params.join('&');
         }
         function showModal() {
-            document.getElementById('modal').className = 'modal';
+            if (YYCAppBridge) {
+                YYCAppBridge('callSharePerformance', [
+                    '有演出美好药店--音药，不能停！红包，这儿领！',
+                    '音乐是良药，按时服用，对症下药，即用即愈。',
+                    shareUrl(),
+                    'https://dn-youyanchu-special.qbox.me/ybnt-2/images/ybnt-00.jpg'
+                ]);
+                return false;
+            } else {
+                document.getElementById('modal').className = 'modal';
+            }
         }
         function hideModal() {
             document.getElementById('modal').className = '';
