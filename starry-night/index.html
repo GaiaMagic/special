@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!--
+vim: se et sw=4 ts=4 sts=4:
+-->
+<html>
+
+<head>
+<meta charset="utf-8">
+<title>2015待见星空音乐节---【有演出】红包限量领取</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<link href="//dn-youyanchu-special.qbox.me/assets/css/sh.css" rel="stylesheet" type="text/css">
+<script src="//dn-youyanchu-special.qbox.me/assets/js/qrcode.min.js"></script>
+<style>
+html, body {
+    margin: 0;
+    background: #000;
+    height: 100%;
+    font-family: "Helvetica Neue",Arial,"Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei";
+    overflow: hidden;
+}
+.wrapper {
+    position: relative;
+    margin: 0 auto 20px;
+    max-width: 480px;
+    height: 100%;
+}
+img {
+    border: 0;
+}
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.background img {
+    width: 100%;
+}
+.share {
+    font-size: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+}
+.share img {
+    width: 100%;
+}
+.share a {
+    padding: 8%;
+    width: 33.3333%;
+    display: inline-block;
+    box-sizing: border-box;
+}
+</style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="background">
+            <img src="//dn-youyanchu-special.qbox.me/starry-night/images/sn-0.jpg">
+        </div>
+        <div class="share">
+            <a id="share-wb" target="_blank" href="#" title="分享到微博">
+                <img src="//dn-youyanchu-special.qbox.me/starry-night/images/sn-4.png">
+            </a>
+            <a id="share-wx" href="#weixin" title="分享到微信">
+                <img src="//dn-youyanchu-special.qbox.me/starry-night/images/sn-3.png">
+            </a>
+            <a id="share-wc" href="#weixin" title="分享到朋友圈">
+                <img src="//dn-youyanchu-special.qbox.me/starry-night/images/sn-2.png">
+            </a>
+        </div>
+    </div>
+
+    <div id="modal"></div>
+    <div class="modal--fade" id="weixin">
+        <div class="modal-inner">
+            <div id="qr-code"></div>
+            <div class="modal-content qr-code-text">微信「扫一扫」</div>
+        </div>
+        <a href="#!" class="modal-close" title="关闭">&times;</a>
+    </div>
+
+    <script>
+        var YYCAppBridge = null;
+
+        function setUpBridge () {
+            var bridge = window.YYCApp;
+            if (bridge) {
+                YYCAppBridge = function (method, args) {
+                    window.YYCApp[method].apply(window.YYCApp, args);
+                };
+            } else {
+                bridge = window.WebViewJavascriptBridge;
+                if (bridge) {
+                    YYCAppBridge = function (method, args) {
+                        window.WebViewJavascriptBridge.callHandler(method, args);
+                    };
+                } else {
+                    YYCAppBridge = null;
+                }
+            }
+
+            if (YYCAppBridge) {
+                var perfLinks = document.getElementsByClassName('perfLink');
+                if (perfLinks && perfLinks.length) {
+                    for (var i = 0; i < perfLinks.length; i++) {
+                        var perfId = /\d+/.exec(perfLinks[i].href)[0];
+                        perfLinks[i].onclick = (function (perfId) {
+                            return function () {
+                                YYCAppBridge('callPerformanceDetail', [perfId]);
+                                return false;
+                            };
+                        })(perfId);
+                    }
+                }
+                document.getElementById('share-wb').onclick = showModal;
+            }
+        }
+
+        setUpBridge();
+        document.addEventListener('WebViewJavascriptBridgeReady', function(event) {
+            setUpBridge();
+        });
+
+        function shareUrl() {
+            return 'https://services.youyanchu.com/coupons/ywVY9CmWGWNw38yCL0TXEw';
+        }
+        function shareToWeibo() {
+            var url = 'http://service.weibo.com/share/share.php';
+            var options = {
+                url: shareUrl(),
+                pic: 'https://dn-youyanchu-special.qbox.me/starry-night/images/sn-1.jpg',
+                title: '2015待见星空音乐节---【有演出】红包限量领取',
+                appkey: '2951307331',
+            };
+            var params = [];
+            for (var key in options) {
+                params.push(key + '=' + encodeURIComponent(options[key]));
+            }
+            return url + '?' + params.join('&');
+        }
+        function showModal() {
+            if (YYCAppBridge) {
+                YYCAppBridge('callSharePerformance', [
+                    '2015待见星空音乐节---【有演出】红包限量领取',
+                    '2015待见星空音乐节---【有演出】红包限量领取',
+                    shareUrl(),
+                    'https://dn-youyanchu-special.qbox.me/starry-night/images/sn-1.jpg'
+                ]);
+                return false;
+            } else {
+                document.getElementById('modal').className = 'modal';
+            }
+        }
+        function hideModal() {
+            document.getElementById('modal').className = '';
+        }
+        document.getElementById('share-wb').href = shareToWeibo();
+        document.getElementById('share-wx').onclick = showModal;
+        document.getElementById('share-wc').onclick = showModal;
+        document.getElementById('modal').onclick = hideModal;
+        new QRCode(document.getElementById('qr-code'), {
+            text: shareUrl(),
+            width: 220,
+            height: 220,
+            margin: 20
+        });
+    </script>
+</body>
+
+</html>
