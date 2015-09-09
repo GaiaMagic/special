@@ -89,15 +89,19 @@ img {
         function setUpBridge () {
             var bridge = window.YYCApp;
             if (bridge) {
+                // Android
                 YYCAppBridge = function (method, args) {
                     window.YYCApp[method].apply(window.YYCApp, args);
                 };
+                YYCAppBridge.isAndroid = true;
             } else {
+                // iOS
                 bridge = window.WebViewJavascriptBridge;
                 if (bridge) {
                     YYCAppBridge = function (method, args) {
                         window.WebViewJavascriptBridge.callHandler(method, args);
                     };
+                    YYCAppBridge.isAndroid = false;
                 } else {
                     YYCAppBridge = null;
                 }
@@ -144,9 +148,15 @@ img {
         }
         function showModal() {
             if (YYCAppBridge) {
+                var title = '2015待见星空音乐节---【有演出】红包限量领取';
+                var content = '';
+                if (YYCAppBridge.isAndroid) {
+                    content = title;
+                    title = '';
+                }
                 YYCAppBridge('callSharePerformance', [
-                    '2015待见星空音乐节---【有演出】红包限量领取',
-                    '',
+                    title,
+                    content,
                     shareUrl(),
                     'https://dn-youyanchu-special.qbox.me/starry-night/images/sn-1.jpg'
                 ]);
