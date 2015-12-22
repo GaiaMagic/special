@@ -40,6 +40,7 @@ img {
 </head>
 
 <body>
+    <div style="display: none"><img src="http://dn-youyanchu-special.qbox.me/zhaolei/images/share.jpg"></div><!-- for weixin -->
     <div class="wrapper">
         <div class="one">
             <img src="//dn-youyanchu-special.qbox.me/zhaolei/images/01_01.jpg">
@@ -94,6 +95,29 @@ img {
             <img src="//dn-youyanchu-special.qbox.me/zhaolei/images/11.png">
         </div>
     </div>
+    <script>
+        function onSuccess(){
+        }
+        function onerror(){
+        }
+        var BoxShareData = {
+            successcallback: "onSuccess",
+            errorcallback: "onerror",
+            options:{
+                //分享类型是网址分享
+                type: 'url',
+                //内容
+                content: "",
+                iconUrl: "http://dn-youyanchu-special.qbox.me/zhaolei/images/share.jpg",
+                imageUrl: "http://dn-youyanchu-special.qbox.me/zhaolei/images/share.jpg",
+                //分享的url
+                linkUrl: "https://special.youyanchu.com/zhaolei/",
+                //分享的面板，一般是all，全面版
+                mediaType: "all",
+                title: "赵雷 2015 “我们的时光”全国巡演"
+            }
+        };
+    </script>
 </body>
 
 </html>
