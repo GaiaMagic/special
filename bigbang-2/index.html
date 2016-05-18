@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<!--
+vim: se et sw=4 ts=4 sts=4:
+-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>BIGBANG巡演城市欢动组合票</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <script src="//dn-staticfile.qbox.me/jquery/1.11.3/jquery.min.js"></script>
+    <style>
+        html, body {
+            margin: 0;
+            background: #000;
+            font-family: "Helvetica Neue",Arial,"Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei";
+        }
+        p , h2{
+            margin: 0;
+        }
+        .wrapper {
+            max-width: 480px;
+            margin: auto;
+            font-size: 0;
+        }
+        .top, .bottom {
+            width: 100%;
+        }
+        .img_line {
+            height: 24px;
+            width: 24px;
+        }
+        .header {
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #6f747b;
+            text-align: center;
+        }
+        .detail {
+            font-size: 12px;
+            color: #8b8b8b;
+        }
+        .content {
+            padding: 20px 30px 20px 30px;
+            background-color: white;
+            font-size: 12px;
+        }
+        .areas {
+            background: #eee;
+        }
+        .area-item {
+            float: left;
+            width: 25%;
+            text-align: center;
+            font-size: 0;
+            padding: 3px;
+            box-sizing: border-box;
+        }
+        .area {
+            display: block;
+            position: relative;
+            height: 30px;
+            line-height: 30px;
+            font-size: 14px;
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid;
+            border-color: #fff;
+            background: #fff;
+            color: #666;
+        }
+        .area.active {
+            border-color: #1186ff;
+            background: #2e9cff;
+            color: #fff;
+        }
+        .city {
+            font-size: 12px;
+            background: #eee;
+            text-align: center;
+            color: #666;
+            padding: 10px;
+        }
+        .items {
+            background: #eee;
+            color: #666;
+            font-size: 14px;
+            padding-bottom: 10px;
+        }
+        .item + .item {
+            margin-top: 5px;
+        }
+        .item {
+            text-decoration: none;
+            color: #666;
+            background: #fff;
+            display: table;
+            width: 100%;
+        }
+        .item-image {
+            display: table-cell;
+            vertical-align: middle;
+            padding: 20px 30px;
+            width: 106px;
+        }
+        .item-image img {
+            -webkit-box-shadow: 0 1px 10px rgba(0,0,0,.3);
+            box-shadow: 0 1px 10px rgba(0,0,0,.3);
+        }
+        .item-info {
+            display: table-cell;
+            vertical-align: middle;
+            padding: 20px 10px 20px 0;
+            font-size: 12px;
+        }
+        .item-info h5 {
+            font-size: 14px;
+            margin: 0 0 5px;
+        }
+        .item-arrow {
+            display: table-cell;
+            width: 18px;
+            vertical-align: middle;
+            padding: 0 30px 0 10px;
+        }
+        .item-arrow:after {
+            content: '';
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-top: 2px solid #a4a4a4;
+            border-right: 2px solid #a4a4a4;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+        .indent {
+            text-indent: 13px;
+        }
+        @media (max-width: 30em) {
+            .item-image {
+                padding: 10px 16px;
+                width: 60px;
+            }
+            .item-image img {
+                width: 60px;
+                height: auto;
+            }
+            .item-arrow {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="wrapper">
+    <div>
+        <img class="top" src="//dn-youyanchu-special.qbox.me/bigbang-2/images/header.jpg">
+    </div>
+    <div class="about content">
+        <h2 class="header">
+            BIGBANG巡演城市欢动组合票
+        </h2>
+        <p class="detail">
+            <span style="color: #ce4350">1. 兑换活动仅限购买了BIGBANG演唱会门票的消费者参与。</span><br>
+            2. 在以下城市及演出项目中选取一份VIP票。<br>
+            3. 兑换时间从BIGBANG售票之日起至8月31日止。<br>
+            4. 活动流程
+        </p>
+        <p class="detail indent">购买BIGBANG组合票后</p>
+        <p class="detail indent">收到BIGBANG纸质票</p>
+        <p class="detail indent">致电客服</p>
+        <p class="detail indent">报BIGBANG纸质票票号</p>
+        <p class="detail indent">需提前3天致电预约</p>
+        <p class="detail indent">客服收到信息预约排期</p>
+        <p class="detail indent">有位置的话将核对信息</p>
+        <p class="detail indent">2个工作日内予以确认短信</p>
+        <p class="detail indent">无位置将于2个工作日内予以调换城市或场次的短信</p>
+        <p class="detail indent">消费者确认使用</p>
+        <p class="detail">
+            5. 在法律允许范围内，有演出有权对活动规则进行解释，如有任何问题请与有演出客服联系，客服热线400-855-6694（工作日9：30-17：00）
+        </p>
+    </div>
+    <div class="content areas">
+        <div class="area-item">
+            <a href class="area" data-id="262">广州</a>
+        </div>
+        <div class="area-item">
+            <a href class="area" data-id="262">佛山</a>
+        </div>
+        <div class="area-item">
+            <a href class="area" data-id="263">太原</a>
+        </div>
+        <div class="area-item">
+            <a href class="area" data-id="264">厦门</a>
+        </div>
+        <div class="area-item">
+            <a href class="area" data-id="265">济南</a>
+        </div>
+        <div class="area-item">
+            <a href class="area" data-id="266">北京</a>
+        </div>
+        <div class="area-item">
+            <a href class="area" data-id="267">大连</a>
+        </div>
+        <div class="area-item">
+            <a href class="area" data-id="268">南宁</a>
+        </div>
+        <div class="area-item">
+            <a href class="area" data-id="269">天津</a>
+        </div>
+        <div class="area-item">
+            <a href class="area" data-id="270">重庆</a>
+        </div>
+        <div class="area-item">
+            <a href class="area" data-id="271">西安</a>
+        </div>
+        <div class="area-item">
+            <a href class="area" data-id="272">沈阳</a>
+        </div>
+        <div class="area-item">
+            <a href class="area" data-id="273">哈尔滨</a>
+        </div>
+        <div class="area-item">
+            <a href class="area" data-id="274">昆明</a>
+        </div>
+        <div class="area-item">
+            <a href class="area" data-id="275">福州</a>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+
+    <div class="city"><span id="city"></span>的演出</div>
+
+    <div id="performances" class="items"></div>
+
+    <div>
+        <img class="bottom" src="//dn-youyanchu-special.qbox.me/bigbang/images/bottom-new.jpg">
+    </div>
+</div>
+
+<script>
+    function getFeature (id, city) {
+        $.getJSON('https://special.youyanchu.com/api/features/' + id).then(function (feature) {
+            $('#performances').empty();
+            $('#city').text(city);
+            $.each(feature.performances, function (i, performance) {
+                $('#performances').append(
+                    '<a class="item" href="https://youyanchu.com/show/' + performance.id + '" target="_blank">' +
+                        '<div class="item-image">' +
+                            '<img width="106" height="152" src="' + performance.poster_thumb + '">' +
+                        '</div>' +
+                        '<div class="item-info">' +
+                            '<h5>' + performance.title + '</h5>' +
+                            '<p>' + performance.city + ' - ' + performance.location + '</p>' +
+                            '<p>' + performance.begin_at.slice(0, 10) + '</p>' +
+                        '</div>' +
+                        '<div class="item-arrow"></div>' +
+                    '</a>'
+                );
+                console.log(performance);
+            });
+        });
+    }
+    $(document).on('click', '[data-id]', function (e) {
+        $('[data-id]').removeClass('active');
+        $(this).addClass('active');
+        e.preventDefault();
+        getFeature($(this).data('id'), $(this).text());
+    });
+    $('[data-id]:first').click();
+</script>
+
+</body>
+
+</html>
