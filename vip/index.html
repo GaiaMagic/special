@@ -91,6 +91,11 @@ vim: se et sw=4 ts=4 sts=4:
         .item + .item {
             margin-top: 5px;
         }
+        .item-none [
+            text-align: center;
+            padding: 30px;
+            background: #fff;
+        }
         .item {
             text-decoration: none;
             color: #666;
@@ -161,7 +166,6 @@ vim: se et sw=4 ts=4 sts=4:
         <img class="top" src="//dn-youyanchu-special.qbox.me/bigbang-2/images/top.jpg">
     </div>
     <div class="about content">
-        <h2 class="header">VIP演出套餐资格预约</h2>
         <p class="detail">1. 预约套餐资格仅限购买了如BIGBANG、周杰伦、陈奕迅等组合套餐的消费者参与。</p>
         <p class="detail">2. 截止8月31日前，可在以下城市的演出项目中任意选取一份演出套餐预定。</p>
         <p class="detail">3. 预约兑换流程（如下）</p>
@@ -234,6 +238,14 @@ vim: se et sw=4 ts=4 sts=4:
         $.getJSON('https://special.youyanchu.com/api/features/' + id).then(function (feature) {
             $('#performances').empty();
             $('#city').text(city);
+            if (feature.performances.length === 0) {
+                $('#performances').append(
+                    '<div class="item-none">' +
+                        '暂时还没有' + city + '的演出。' +
+                    '</div>'
+                );
+                return;
+            }
             $.each(feature.performances, function (i, performance) {
                 $('#performances').append(
                     '<div class="item">' +
