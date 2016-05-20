@@ -158,31 +158,21 @@ vim: se et sw=4 ts=4 sts=4:
 
 <div class="wrapper">
     <div>
-        <img class="top" src="//dn-youyanchu-special.qbox.me/bigbang-2/images/header.jpg">
+        <img class="top" src="//dn-youyanchu-special.qbox.me/bigbang-2/images/top.jpg">
     </div>
     <div class="about content">
         <h2 class="header">
             BIGBANG巡演城市欢动组合票
         </h2>
-        <p class="detail">
-            <span style="color: #ce4350">1. 兑换活动仅限购买了BIGBANG演唱会门票的消费者参与。</span><br>
-            2. 在以下城市及演出项目中选取一份VIP票。<br>
-            3. 兑换时间从BIGBANG售票之日起至8月31日止。<br>
-            4. 活动流程
-        </p>
-        <p class="detail indent">购买BIGBANG组合票后</p>
-        <p class="detail indent">收到BIGBANG纸质票</p>
-        <p class="detail indent">致电客服</p>
-        <p class="detail indent">报BIGBANG纸质票票号</p>
-        <p class="detail indent">需提前3天致电预约</p>
-        <p class="detail indent">客服收到信息预约排期</p>
-        <p class="detail indent">有位置的话将核对信息</p>
-        <p class="detail indent">2个工作日内予以确认短信</p>
-        <p class="detail indent">无位置将于2个工作日内予以调换城市或场次的短信</p>
-        <p class="detail indent">消费者确认使用</p>
-        <p class="detail">
-            5. 在法律允许范围内，有演出有权对活动规则进行解释，如有任何问题请与有演出客服联系，客服热线400-855-6694（工作日9：30-17：00）
-        </p>
+        <p class="detail">VIP演出套餐资格预约</p>
+        <p class="detail">1. 预约套餐资格仅限购买了如BIGBANG、周杰伦、陈奕迅等组合套餐的消费者参与。</p>
+        <p class="detail">2. 截止8月31日前，可在以下城市的演出项目中任意选取一份演出套餐预定。</p>
+        <p class="detail">3. 预约兑换流程（如下）</p>
+        <p class="detail indent">1）购买组合套餐后收到纸质门票</p>
+        <p class="detail indent">2）凭门票票号提前3天致电客服预约</p>
+        <p class="detail indent">3）此预约信息客服将反馈至票务代理做最终确认</p>
+        <p class="detail indent">注意：预约成功后会在两个工作日内予以短信通知，消费者可凭短信前往演出现场消费。如预约已满或演出无位置，客服将于两个工作日内给予通知，消费者可重新选择。</p>
+        <p class="detail">4. 平台在法律范围内对活动规则保留最终解释权，本次预约兑换活动有演出平台属于统一对票务代理的活动做预约及查询，如有疑难问题请与有演出客服联系，客服热线400-855-6694（工作日9：30-17：00）。</p>
     </div>
     <div class="content areas">
         <div class="area-item">
@@ -249,7 +239,7 @@ vim: se et sw=4 ts=4 sts=4:
             $('#city').text(city);
             $.each(feature.performances, function (i, performance) {
                 $('#performances').append(
-                    '<a class="item" href="https://youyanchu.com/show/' + performance.id + '" target="_blank">' +
+                    '<div class="item">' +
                         '<div class="item-image">' +
                             '<img width="106" height="152" src="' + performance.poster_thumb + '">' +
                         '</div>' +
@@ -258,10 +248,8 @@ vim: se et sw=4 ts=4 sts=4:
                             '<p>' + performance.city + ' - ' + performance.location + '</p>' +
                             '<p>' + performance.begin_at.slice(0, 10) + '</p>' +
                         '</div>' +
-                        '<div class="item-arrow"></div>' +
-                    '</a>'
+                    '</div>'
                 );
-                console.log(performance);
             });
         });
     }
