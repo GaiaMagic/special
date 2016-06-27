@@ -235,7 +235,7 @@ vim: se et sw=4 ts=4 sts=4:
 
 <script>
     function getFeature (id, city) {
-        $.getJSON('https://special.youyanchu.com/api/features/' + id).then(function (feature) {
+        $.getJSON('//special.youyanchu.com/api/features/' + id).then(function (feature) {
             $('#performances').empty();
             $('#city').text(city);
             if (feature.performances.length === 0) {
